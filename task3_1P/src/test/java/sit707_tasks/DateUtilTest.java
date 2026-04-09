@@ -31,6 +31,7 @@ public class DateUtilTest {
         System.out.println(date);
         Assert.assertEquals(2, date.getMonth());
         Assert.assertEquals(1, date.getDay());
+        Assert.assertEquals(2024, date.getYear());
 	}
 	
 	@Test
@@ -42,6 +43,7 @@ public class DateUtilTest {
         System.out.println(date);
         Assert.assertEquals(30, date.getDay());
         Assert.assertEquals(1, date.getMonth());
+        Assert.assertEquals(2024, date.getYear());
 	}
 	
 	@Test
@@ -82,4 +84,114 @@ public class DateUtilTest {
 	/*
 	 * Write tests for rest months of year 2024.
 	 */
+	
+	@Test
+	public void testApril30ShouldIncrementToMay1() {
+		DateUtil date = new DateUtil(30, 4, 2024);
+        System.out.println("testApril30ShouldIncrementToMay1 > " + date);
+        date.increment();
+        System.out.println(date);
+        Assert.assertEquals(1, date.getDay());
+        Assert.assertEquals(5, date.getMonth());
+        Assert.assertEquals(2024, date.getYear());
+	}
+	
+	@Test
+	public void testJune30ShouldIncrementToJuly1() {
+		DateUtil date = new DateUtil(30, 6, 2024);
+        System.out.println("testJune30ShouldIncrementToJuly1 > " + date);
+        date.increment();
+        System.out.println(date);
+        Assert.assertEquals(1, date.getDay());
+        Assert.assertEquals(7, date.getMonth());
+        Assert.assertEquals(2024, date.getYear());
+	}
+	
+	@Test
+	public void testSeptember30ShouldIncrementToOctober1() {
+		DateUtil date = new DateUtil(30, 9, 2024);
+        System.out.println("testSeptember30ShouldIncrementToOctober1 > " + date);
+        date.increment();
+        System.out.println(date);
+        Assert.assertEquals(1, date.getDay());
+        Assert.assertEquals(10, date.getMonth());
+        Assert.assertEquals(2024, date.getYear());
+	}
+	
+	@Test
+	public void testNovember30ShouldIncrementToDecember1() {
+		DateUtil date = new DateUtil(30, 11, 2024);
+        System.out.println("testNovember30ShouldIncrementToDecember1 > " + date);
+        date.increment();
+        System.out.println(date);
+        Assert.assertEquals(1, date.getDay());
+        Assert.assertEquals(12, date.getMonth());
+        Assert.assertEquals(2024, date.getYear());
+	}
+	
+	@Test
+	public void testFebruary28ShouldIncrementTo29_LeapYear() {
+		DateUtil date = new DateUtil(28, 2, 2024);
+        System.out.println("testFebruary28ShouldIncrementTo29_LeapYear > " + date);
+        date.increment();
+        System.out.println(date);
+        Assert.assertEquals(29, date.getDay());
+        Assert.assertEquals(2, date.getMonth());
+        Assert.assertEquals(2024, date.getYear());
+	}
+	
+	@Test
+	public void testFebruary29ShouldIncrementToMarch1_LeapYear() {
+		DateUtil date = new DateUtil(29, 2, 2024);
+        System.out.println("testFebruary29ShouldIncrementToMarch1_LeapYear > " + date);
+        date.increment();
+        System.out.println(date);
+        Assert.assertEquals(1, date.getDay());
+        Assert.assertEquals(3, date.getMonth());
+        Assert.assertEquals(2024, date.getYear());
+	}
+	
+	@Test
+	public void testMarch1ShouldDecrementToFebruary29_LeapYear() {
+		DateUtil date = new DateUtil(1, 3, 2024);
+        System.out.println("testMarch1ShouldDecrementToFebruary29_LeapYear > " + date);
+        date.decrement();
+        System.out.println(date);
+        Assert.assertEquals(29, date.getDay());
+        Assert.assertEquals(2, date.getMonth());
+        Assert.assertEquals(2024, date.getYear());
+	}
+	
+	@Test
+	public void testFebruary29ShouldDecrementToFebruary28_LeapYear() {
+		DateUtil date = new DateUtil(29, 2, 2024);
+        System.out.println("testFebruary29ShouldDecrementToFebruary28_LeapYear > " + date);
+        date.decrement();
+        System.out.println(date);
+        Assert.assertEquals(28, date.getDay());
+        Assert.assertEquals(2, date.getMonth());
+        Assert.assertEquals(2024, date.getYear());
+	}
+	
+	@Test
+	public void testDecember31ShouldIncrementToNextYear() {
+		DateUtil date = new DateUtil(31, 12, 2024);
+        System.out.println("testDecember31ShouldIncrementToNextYear > " + date);
+        date.increment();
+        System.out.println(date);
+        Assert.assertEquals(1, date.getDay());
+        Assert.assertEquals(1, date.getMonth());
+        Assert.assertEquals(2025, date.getYear());
+	}
+	
+	@Test
+	public void testDecember1ShouldDecrementToNovember30() {
+		DateUtil date = new DateUtil(1, 12, 2024);
+        System.out.println("testDecember1ShouldDecrementToNovember30 > " + date);
+        date.decrement();
+        System.out.println(date);
+        Assert.assertEquals(30, date.getDay());
+        Assert.assertEquals(11, date.getMonth());
+        Assert.assertEquals(2024, date.getYear());
+	}
 }
